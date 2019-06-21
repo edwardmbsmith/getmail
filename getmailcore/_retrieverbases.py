@@ -497,6 +497,7 @@ class IMAPinitMixIn(object):
     '''Mix-In class to do IMAP non-SSL initialization.
     '''
     SSL = False
+    imaplib.Untagged_status = imaplib.re.compile(br'\*[ ]{1,2}(?P<data>\d+) (?P<type>[A-Z-]+)( (?P<data2>.*))?')
     def _connect(self):
         self.log.trace()
         try:
